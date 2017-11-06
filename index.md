@@ -40,26 +40,26 @@ To authorize your application for JobTrack API access, you will need to accompli
       * `response_type` must be set to "code"
       * `redirect_uri` must be set to a URL where your application can accept codes and then exchange them for access tokens. It should match the redirect_uri specified when you registered your application.
 
-Here is an example URL that an application located at "myapp.com" might use. (Linebreaks are not included in the URL.)
-
-```
-https://api.jobtrack.io/oauth/authorize?response_type=code&client_id=abc123&redirect_uri=http%3A%2F%2Fmyapp.com%2Foauth%2Fcallback
-```
-
+   Here is an example URL that an application located at "myapp.com" might use. (Linebreaks are not included in the URL.)
+   
+   ```
+   https://api.jobtrack.io/oauth/authorize?response_type=code&client_id=abc123&redirect_uri=http%3A%2F%2Fmyapp.com%2Foauth%2Fcallback
+   ```
+   
 
 1. The user will be asked by JobTrack if they want to authorize your application to interact with JobTrack on their behalf.
 
-If something goes wrong (like the user refused to authorize your application), JobTrack will redirect to the `redirect_uri` with query parameters providing information about the error. For example, if authorization is denied, the user will be redirected to:
-
-```
-$REDIRECT_URI?error=access_denied&error_description=The+resource+owner+or+authorization+server+denied+the+request.
-```
-
-If the user allows your application, then JobTrack will redirect to the redirect_uri with query parameters providing your application with a time-limited code that your application can exchange for an access token within the next 5 minutes. Here is an example redirection with granted access:
-
-```
-$REDIRECT_URI?code=abc123
-```
+   If something goes wrong (like the user refused to authorize your application), JobTrack will redirect to the `redirect_uri` with query parameters providing information about the error. For example, if authorization is denied, the user will be redirected to:
+   
+   ```
+   $REDIRECT_URI?error=access_denied&error_description=The+resource+owner+or+authorization+server+denied+the+request.
+   ```
+   
+   If the user allows your application, then JobTrack will redirect to the redirect_uri with query parameters providing your application with a time-limited code that your application can exchange for an access token within the next 5 minutes. Here is an example redirection with granted access:
+   
+   ```
+   $REDIRECT_URI?code=abc123
+   ```
 
 1. Your application exchanges the code for an access token
 
@@ -72,12 +72,12 @@ $REDIRECT_URI?code=abc123
    * `redirect_uri` is the exact same value that you used in the original request to `/oauth/authorize`
 
 
-If the request is invalid for some reason, an error response like the one described above will be returned. However, the parameters will be returned in the response body, encoded as JSON, instead of in the URL encoded as query parameters.
-
-If the request is valid, JobTrack will provide a response body, encoded in JSON, containing `access_token` and `token_type`.
-
-   * `access_token` is the token that your application will use to authenticate requests to the JobTrack API as this user
-   * `token_type` will be "bearer"
+   If the request is invalid for some reason, an error response like the one described above will be returned. However, the parameters will be returned in the response body, encoded as JSON, instead of in the URL encoded as query parameters.
+   
+   If the request is valid, JobTrack will provide a response body, encoded in JSON, containing `access_token` and `token_type`.
+   
+      * `access_token` is the token that your application will use to authenticate requests to the JobTrack API as this user
+      * `token_type` will be "bearer"
 
 
 1. Your application uses the access token to make authenticated requests to the JobTrack API
