@@ -96,22 +96,70 @@ All requests to the JobTrack API require an Authorization header. For brevity, f
 ## Endpoints
 
 ### Companies
-* `GET companies`
-* `GET companies/<id>`
-* `POST companies`
+#### `GET companies`
+
+Filters:
+
+* `name` - The name of the company
+
+#### `GET companies/<id>`
+#### `POST companies`
 
 ### Contacts
-* `GET contacts`
-* `GET contacts/<id>`
-* `POST contacts`
-* `PUT contacts/<id>`
+#### `GET contacts`
+
+Filters:
+
+* `name` - The first or last name of the contact
+* `company_id`
+
+#### `GET contacts/<id>`
+#### `POST contacts`
+#### `PUT contacts/<id>`
+
+
+### Events
+#### `GET events`
+
+Filters:
+
+* `creatable_by_user`
+* `type` - The type of the event, e.g. `Events::Interview`
+* `user_id` - Show events for a particular user
+* `future` - Only show events in the future
+ * When `true`, only future events are returned
+ * When `false`, all events are returned
+
+#### `GET events/<id>`
+#### `POST events`
+#### `PUT events/<id>`
+
 
 ### Job Applications
-* `GET job-applications`
-* `GET job-applications/<id>`
-* `POST job-applications`
-* `PUT job-applications/<id>`
+#### `GET job-applications`
+
+Filters:
+
+* `display_name` - The job title or company name of the job applications
+
+#### `GET job-applications/<id>`
+#### `POST job-applications`
+#### `PUT job-applications/<id>`
+
+### Tasks
+#### `GET tasks`
+
+Filters:
+
+* `include_completed` - Show or hide completed tasks. By default, all tasks are returned.
+* `with_due_date` - Filter on presence of due date
+ * When `true`, only tasks with due dates are returned
+ * When `false`, only tasks _without_ due dates are returned
+
+#### `GET tasks/<id>`
+#### `POST tasks`
+#### `PUT tasks/<id>`
 
 ### Users
-* `GET users`
-* `POST users/invite`
+#### `GET users`
+#### `POST users/invite`
