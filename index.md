@@ -232,4 +232,3 @@ Relationships:
 
 ### Users
 #### `GET users`
-#### `POST users/invite`
