@@ -103,7 +103,6 @@ Filters:
 * `name` - The name of the company
 
 #### `GET companies/<id>`
-#### `POST companies`
 
 ### Contacts
 #### `GET contacts`
@@ -115,8 +114,23 @@ Filters:
 
 #### `GET contacts/<id>`
 #### `POST contacts`
+
+Attributes:
+* first_name
+* last_name
+* work_phone
+* personal_phone
+* email
+* notes
+* job_title
+* introduction_notes
+* linkedin_url
+* linkedin_id
+
 #### `PUT contacts/<id>`
 
+Attributes:
+* Same as `POST`
 
 ### Events
 #### `GET events`
@@ -132,7 +146,20 @@ Filters:
 
 #### `GET events/<id>`
 #### `POST events`
+
+Attributes:
+* `type` - one of `Events::Interview`, `Events::PhoneCall`
+* `occurs-at`
+
+Relationships:
+
+* `user`
+* `subject` - `subject_type` must be `JobApplication`, `subject_id` the `JobApplication`'s `id`  
+
 #### `PUT events/<id>`
+
+Attributes:
+* `occurs-at`
 
 
 ### Job Applications
@@ -144,21 +171,62 @@ Filters:
 
 #### `GET job-applications/<id>`
 #### `POST job-applications`
+
+Attributes:
+* `job-title`
+* `status` - one of `interested`, `applied`, `phone_call`, `assignment`, `interview`, `offer`, `accepted`, `withdrawn`, `expired`, `not_a_fit`
+* `location`
+* `notes`
+* `job-description`
+* `url`
+* `date-applied` - ISO8601 formatted date with timezone
+* `starred` - boolean
+* `source` - sub-object with the following attributes:
+ * key
+ * label
+ * code
+ * color
+ 
+Relationships:
+* `company`
+* `user`
+
+* `contacts`
+* `documents`
+* `events`
+
 #### `PUT job-applications/<id>`
+
+Attributes:
+* Same as `POST`
 
 ### Tasks
 #### `GET tasks`
 
 Filters:
 
-* `include_completed` - Show or hide completed tasks. By default, all tasks are returned.
+* `include_completed` - Show or hide completed tasks. By default
+ all tasks are returned.
 * `with_due_date` - Filter on presence of due date
  * When `true`, only tasks with due dates are returned
  * When `false`, only tasks _without_ due dates are returned
 
 #### `GET tasks/<id>`
 #### `POST tasks`
+
+Attributes:
+* `title`
+* `detail`
+* `due-at`
+* `completed`
+
+Relationships:
+* `company`
+* `contact`
+* `job-application`
+
 #### `PUT tasks/<id>`
+* Same as `POST`
 
 ### Users
 #### `GET users`
