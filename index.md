@@ -88,7 +88,7 @@ To authenticate using the Authorization header, set the header's value to `Beare
 For example, authenticating a request using curl would mean running a command similar to this one:
 
 ```
-curl -H "Authorization: Bearer abc123" "https://jobtrack.io/api/v1/job-applications"
+curl -H "Authorization: Bearer abc123" "https://api.jobtrack.io/api/v1/job-applications"
 ```
 
 All requests to the JobTrack API require an Authorization header. For brevity, future API request examples in this documentation will not include the example Authorization header parameter.
