@@ -141,8 +141,8 @@ Filters:
 * `type` - The type of the event, e.g. `Events::Interview`
 * `user_id` - Show events for a particular user
 * `future` - Only show events in the future
- * When `true`, only future events are returned
- * When `false`, all events are returned
+  * When `true`, only future events are returned
+  * When `false`, all events are returned
 
 #### `GET events/<id>`
 #### `POST events`
@@ -182,10 +182,10 @@ Attributes:
 * `date-applied` - ISO8601 formatted date with timezone
 * `starred` - boolean
 * `source` - sub-object with the following attributes:
- * key
- * label
- * code
- * color
+  * key
+  * label
+  * code
+  * color
  
 Relationships:
 * `company`
@@ -208,8 +208,8 @@ Filters:
 * `include_completed` - Show or hide completed tasks. By default
  all tasks are returned.
 * `with_due_date` - Filter on presence of due date
- * When `true`, only tasks with due dates are returned
- * When `false`, only tasks _without_ due dates are returned
+  * When `true`, only tasks with due dates are returned
+  * When `false`, only tasks _without_ due dates are returned
 
 #### `GET tasks/<id>`
 #### `POST tasks`
