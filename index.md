@@ -6,7 +6,9 @@
 1. [Endpoints](#endpoints)
     1. [Companies](#companies)
     1. [Contacts](#contacts)
+    1. [Events](#events)
     1. [Job Applications](#job-applications)
+    1. [Tasks](#tasks)
     1. [Users](#users)
 
 ## Introduction
