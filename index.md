@@ -232,3 +232,11 @@ Relationships:
 
 ### Users
 #### `GET users`
+
+Attributes:
+* `first-name`
+* `last-name`
+* `email`
+* `job-applications-count`
+* `role-name`
+* `last-seen-at`
