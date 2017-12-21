@@ -98,7 +98,7 @@ All requests to the JobTrack API require an Authorization header. For brevity, f
 ## Endpoints
 
 ### Company Masters
-A Company Master is a global identifier for a company. In order to create a Company record (see below), a `company_master_id` is required. JobTrack leverages the Glassdoor API to generate a list of Company Master objects, which can be searched by name. Company Masters can be created if the record doesn't already exist.
+A Company Master is a global identifier for a company. In order to create a Company record (see below), a Company Master `id` is required. JobTrack leverages the Glassdoor API to generate a list of Company Master search result objects, which can be queried by name. Company Masters can be created if the record doesn't already exist.
 
 #### `GET company-masters?autocomplete=<name>`
 Searching for Company Masters requires the `autocomplete` param equal to the search term. Given a company name, JobTrack will search both the internal database and Glassdoor API to find matching companies. The response is in the following format:
