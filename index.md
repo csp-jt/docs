@@ -170,11 +170,11 @@ Filters:
 * `name` - The name of the company
 
 #### `GET companies/<id>`
-
-#### `PUT companies`
+#### `POST companies`
 
 Relationships:
 * `company-master`
+
 
 ### Contacts
 #### `GET contacts`
