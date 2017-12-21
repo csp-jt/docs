@@ -128,7 +128,7 @@ Searching for Company Masters requires the `autocomplete` param equal to the sea
 
 The above response shows an example of a Company Master that doens't exist yet in the JobTrack database. This is indicated by the `"new": true` attribute and the `id` attribute containing "glassdoor-id-".
 
-A Company Master that exists in the JobTrack database is represented as follows.:
+A Company Master that exists in the JobTrack database is represented as follows:
 
 ```json
 {  
@@ -171,6 +171,11 @@ Filters:
 
 #### `GET companies/<id>`
 
+#### `PUT companies`
+
+Relationships:
+* `company-master`
+
 ### Contacts
 #### `GET contacts`
 
@@ -183,16 +188,16 @@ Filters:
 #### `POST contacts`
 
 Attributes:
-* first_name
-* last_name
-* work_phone
-* personal_phone
-* email
-* notes
-* job_title
-* introduction_notes
-* linkedin_url
-* linkedin_id
+* `first_name`
+* `last_name`
+* `work_phone`
+* `personal_phone`
+* `email`
+* `notes`
+* `job_title`
+* `introduction_notes`
+* `linkedin_url`
+* `linkedin_id`
 
 #### `PUT contacts/<id>`
 
@@ -262,7 +267,7 @@ Assigning a company to a job application is a multi-step process that requires c
 A Company Master is a global record in JobTrack that holds metadata such as URL, Industry and Glassdoor reviews.
 A Company is a link record between a Company Master and a User. Each user saving jobs for the same company will receive distinct Company records.
 
-See [Creating a Company Master & Company](#company-masters)
+See [Creating a Company Master](#creating-a-company-master) for instructions on how to create the necessary records.
 
 
 * `user`
