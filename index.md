@@ -4,6 +4,7 @@
 1. [Schema](#schema)
 1. [Authentication](#authentication)
 1. [Endpoints](#endpoints)
+    1. [Company Masters](#company-masters)
     1. [Companies](#companies)
     1. [Contacts](#contacts)
     1. [Events](#events)
