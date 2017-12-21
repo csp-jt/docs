@@ -97,6 +97,71 @@ All requests to the JobTrack API require an Authorization header. For brevity, f
 
 ## Endpoints
 
+### Company Masters
+A Company Master is a global identifier for a company. In order to create a Company record (see below), a `company_master_id` is required. JobTrack leverages the Glassdoor API to generate a list of Company Master objects, which can be searched by name. Company Masters can be created if the record doesn't already exist.
+
+#### `GET company-masters?autocomplete=<name>`
+Searching for Company Masters requires the `autocomplete` param equal to the search term. Given a company name, JobTrack will search both the internal database and Glassdoor API to find matching companies. The response is in the following format:
+
+```json
+{  
+   "data":[  
+      {  
+         "id":"glassdoor-id-40772",
+         "type":"company-masters",
+         "attributes":{  
+            "created-at":null,
+            "updated-at":null,
+            "name":"Facebook",
+            "url":"www.facebook.com",
+            "new":true,
+            "glassdoor-id":40772,
+            "glassdoor-data":null,
+            "image-url":null,
+            "industry":null,
+            "enriched":null
+         }
+      }
+   ]
+}
+```
+
+The above response shows an example of a Company Master that doens't exist yet in the JobTrack database. This is indicated by the `"new": true` attribute and the `id` attribute containing "glassdoor-id-".
+
+A Company Master that exists in the JobTrack database is represented as follows.:
+
+```json
+{  
+   "data":[  
+      {  
+         "id":"18",
+         "type":"company-masters",
+         "attributes":{  
+            "name":"Isobar",
+            "url":"www.isobar.com",
+            "new":false,
+            "glassdoor-id":334219,
+            "glassdoor-data":null,
+            "image-url":null,
+            "industry":null,
+            "enriched":null
+         }
+      }
+   ]
+}
+```
+
+Note that in the above example, `new` is `false` and the `id` is an integer.
+
+#### Creating a Company Master
+If the results of `autocomplete` indicate that the Company Master hasn't yet been created in JobTrack, a `POST` request must be issued to the `company-masters` endpoint to create the record. The following attributes are supported:
+* `name` (required)
+* `url`
+* `glassdoor-id` (encouraged, can be retrieved from result of `autocomplete` operation)
+
+The reponse of this `POST` operation includes an `id` that is required for the next step of the process: creating the Company record
+
+
 ### Companies
 #### `GET companies`
 
@@ -191,6 +256,15 @@ Attributes:
  
 Relationships:
 * `company`
+Assigning a company to a job application is a multi-step process that requires creating (or retrieving) both a Company Master and a Company. 
+
+##### Company Master vs Company
+A Company Master is a global record in JobTrack that holds metadata such as URL, Industry and Glassdoor reviews.
+A Company is a link record between a Company Master and a User. Each user saving jobs for the same company will receive distinct Company records.
+
+See [Creating a Company Master & Company](#company-masters)
+
+
 * `user`
 
 * `contacts`
