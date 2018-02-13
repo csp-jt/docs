@@ -264,11 +264,11 @@ Relationships:
 * `company`
 Assigning a company to a job application is a multi-step process that requires creating (or retrieving) both a Company Master and a Company. 
 
-##### Company Master vs Company
-A Company Master is a global record in JobTrack that holds metadata such as URL, Industry and Glassdoor reviews.
-A Company is a link record between a Company Master and a User. Each user saving jobs for the same company will receive distinct Company records.
+    ##### Company Master vs Company
+    A Company Master is a global record in JobTrack that holds metadata such as URL, Industry and Glassdoor reviews.
+    A Company is a link record between a Company Master and a User. Each user saving jobs for the same company will receive distinct Company records.
 
-See [Creating a Company Master](#creating-a-company-master) for instructions on how to create the necessary records.
+    See [Creating a Company Master](#creating-a-company-master) for instructions on how to create the necessary records.
 
 
 * `user`
