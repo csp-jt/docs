@@ -145,7 +145,7 @@ A Company Master that exists in the JobTrack database is represented as follows:
             "glassdoor-data":null,
             "image-url":null,
             "industry":null,
-            "enriched":null
+            "enriched":false
          }
       }
    ]
@@ -223,6 +223,23 @@ Filters:
 Attributes:
 * `type` - one of `Events::Interview`, `Events::PhoneCall`
 * `occurs-at`
+* `additional-data`
+
+    Additional Data contents depends on the event type:
+    
+    * `Events::JobApplicationCreated`:
+        * `initial_status` - the status the job was saved in (defualts to "interested")
+
+    * `Events::JobApplicationStatusChange`:
+        * `to`
+        * `from`
+
+    * `Events::Offer`:
+        * `offer_amount`
+        
+    * `Events::Acceptance`:
+        * `start_date`
+        * `salary`
 
 Relationships:
 
